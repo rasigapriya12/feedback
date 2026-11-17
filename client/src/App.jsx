@@ -3,7 +3,7 @@ import "./App.css";
 import { useState } from "react";
 import axios from "axios";
 
-const API_URL = "https://feedback-1-xc6j.onrender.com";
+const API_URL = "https://feedback-2-t67t.onrender.com";
 
 function App() {
   const [feedback, setFeedback] = useState({
