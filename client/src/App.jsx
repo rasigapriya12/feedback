@@ -3,6 +3,8 @@ import "./App.css";
 import { useState } from "react";
 import axios from "axios";
 
+const API_URL = "https://feedback-1-xc6j.onrender.com";
+
 function App() {
   const [feedback, setFeedback] = useState({
     q1: "",
@@ -23,10 +25,7 @@ function App() {
     e.preventDefault();
 
     try {
-      await axios.post(
-        "http://localhost:5000/api/feedback",
-        feedback
-      );
+      await axios.post(`${API_URL}/api/feedback`, feedback);
 
       alert("Feedback submitted successfully!");
 
@@ -39,7 +38,11 @@ function App() {
       });
     } catch (error) {
       console.error("Submission error:", error);
-      alert("Submission failed. Check the backend server.");
+
+      alert(
+        error.response?.data?.message ||
+        "Submission failed. Please check your backend connection."
+      );
     }
   };
 
